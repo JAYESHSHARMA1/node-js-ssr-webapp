@@ -1,0 +1,60 @@
+<%- include('partials/header',{title:'Login'}); %>
+
+  <body class="">
+    <% if(messages && messages.error){ %>
+      <div id="snackbar">
+          <%= messages && messages.error %>
+      </div>
+      <% } %>
+    <div class="page">
+      <div class="page-single">
+        <div class="container">
+          <div class="row">
+            <div class="col col-login mx-auto">
+              <div class="text-center mb-6">
+                <img src="./assets/brand/tabler.svg" class="h-6" alt="">
+              </div>
+              <form class="card" action="/login" name="loginForm" method="post" >
+                <div class="card-body p-6">
+                  <div class="card-title">Login to your account</div>
+                  <div class="form-group">
+                    <label class="form-label">Email address</label>
+                    <input type="email" class="form-control"  id="exampleInputEmail1" name='email' value='<%= form && form.email %>' aria-describedby="emailHelp" placeholder="Enter email">
+                    <span class="error" id='erremail'></span>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">
+                      Password
+                      <a href="/forgot-password" class="float-right small">I forgot password</a>
+                    </label>
+                    <input type="password" class="form-control" id="exampleInputPassword1" name='password' placeholder="Password">
+                    <span class="text-danger" id='errpassword'></span>
+                  </div>
+                  <div class="form-group">
+                    <label class="custom-control custom-checkbox">
+                      <input type="checkbox" name="rememberMe" class="custom-control-input" />
+                      <span class="custom-control-label">Remember me</span>
+                    </label>
+                  </div>
+                  <div class="form-footer">
+                    <button type="submit" class="btn btn-primary btn-block">Login</button>
+                  </div>
+                </div>
+              </form>
+              <div class="text-center text-muted">
+                Don't have account yet? <a href="/create-new-account">Create new account</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <%- include('partials/scripts'); %>
+
+
+  </body>
+
+
+
+  <%- include('partials/footer'); %>

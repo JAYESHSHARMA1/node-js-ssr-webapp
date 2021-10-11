@@ -1,0 +1,157 @@
+<%- include('partials/header',{title:'Profile'}); %>
+
+    <body class="">
+        <% if(messages && messages.error){ %>
+            <div id="snackbar">
+                <%= messages && messages.error %>
+            </div>
+            <% } %>
+                <div class="page">
+                    <div class="page-main">
+                        <%- include('common/navbar',{title:'Dashboard',user:user,active:'none'}); %>
+                            <div class="my-3 my-md-5">
+                                <div class="container">
+                                    <div class="page-header">
+                                        <h1 class="page-title">
+                                            <%= user && user.name %>
+                                        </h1>
+                                    </div>
+                                    <div class="row row-cards">
+                                        <div class="col-lg-4">
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    <h3 class="card-title">My Profile</h3>
+                                                </div>
+                                                <div class="card-body">
+                                                    <div class="row">
+                                                        <div class="col-auto">
+                                                            <span class="avatar avatar-xl"
+                                                                style="background-image: url(<%= user && user.profileImage %>)"></span>
+                                                        </div>
+                                                        <div class="col">
+                                                            <div class="form-group">
+                                                                <label class="form-label">Name</label>
+                                                                <div class="form-control-plaintext">
+                                                                    <%= user && user.name %>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="form-label">Account Type</label>
+                                                        <div class="form-control-plaintext">
+                                                            <%= user && user.role || 'User' %>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="form-label">Email-Address</label>
+                                                        <div class="form-control-plaintext">
+                                                            <%= user && user.email %>
+                                                        </div>
+                                                    </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-8">
+                                            <form class="card" name='updateProfileForm' action="/profile" method="post" enctype="multipart/form-data">
+                                                <input type="hidden" class="form-control" name='type' value='updateProfile'>
+                                                <div class="card-body">
+                                                    <h3 class="card-title">Edit Profile</h3>
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label class="form-label">Profile Image</label>
+                                                                <div class="custom-file">
+                                                                    <input type="file" class="custom-file-input"
+                                                                        name="stocks-file">
+                                                                    <label class="custom-file-label">Select Profile
+                                                                        Picture</label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-sm-12">
+                                                            <div class="form-group">
+                                                                <label class="form-label">Change Name</label>
+                                                                <input type="text" class="form-control"
+                                                                    placeholder="Enter Name Here">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="card-footer text-right">
+                                                    <button type="submit" class="btn btn-primary">Update
+                                                        Profile</button>
+                                                </div>
+                                            </form>
+                                            <form  name='changePasswordForm' action="/profile" method="post">
+                                                <input type="hidden"  class="form-control" name='type' value='changePassword'>
+                                                <div class="card">
+                                                    <div class="card-header">
+                                                        <h3 class="card-title">Change Password</h3>
+                                                    </div>
+                                                    <div class="card-body">
+                                                        <div class="row">
+                                                            <div class="col-sm-12">
+                                                                <div class="form-group">
+                                                                    <label class="form-label">Current Password</label>
+                                                                    <input type="password" class="form-control"
+                                                                    name="currentPassword"
+                                                                    
+                                                                        placeholder="Current Password">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-12">
+                                                                <div class="form-group">
+                                                                    <label class="form-label">New Password</label>
+                                                                    <input type="password" id='newPassword' class="form-control"
+                                                                    name="newPassword"
+                                                                        placeholder="New Password">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-12">
+                                                                <div class="form-group">
+                                                                    <label class="form-label">Confirm New
+                                                                        Password</label>
+                                                                    <input type="password" class="form-control"
+                                                                    name="confirmNewPassword"
+                                                                        placeholder="Confirm New Password">
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-footer text-right">
+                                                        <button type="submit" class="btn btn-primary">Change
+                                                            Password</button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <footer class="footer">
+                                <div class="container">
+                                    <div class="row align-items-center flex-row-reverse">
+
+                                        <div class="col-12 col-lg-auto mt-3 mt-lg-0 text-center">
+                                            Copyright © 2021 <a href="/">CrickStocker</a>. All rights reserved.
+                                        </div>
+                                    </div>
+                                </div>
+                            </footer>
+                    </div>
+
+                    <%- include('partials/scripts'); %>
+
+
+
+    </body>
+
+
+
+    <%- include('partials/footer'); %>

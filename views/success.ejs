@@ -1,0 +1,31 @@
+
+
+
+  <%- include('partials/header',{title:'Success'}); %>
+
+  <body class="">
+    <% if(messages && messages.error){ %>
+      <div id="snackbar">
+          <%= messages && messages.error %>
+      </div>
+      <% } %>
+      <body class="">
+        <div class="page">
+          <div class="page-content">
+            <div class="container text-center">
+              <div class="display-1 text-muted mb-5"><i class="si si-exclamation"></i> Success</div>
+              <h1 class="h2 mb-3">Password Changed Successfully!</h1>
+              <p class="h4 text-muted font-weight-normal mb-7">You have changed your password successfully. Please login now to check.</p>
+              <a class="btn btn-primary" href="/login">
+                Go to Login<i class="fe fe-arrow-right ml-2"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+    <%- include('partials/scripts'); %>
+
+      </body>
+
+
+
+  <%- include('partials/footer'); %>
